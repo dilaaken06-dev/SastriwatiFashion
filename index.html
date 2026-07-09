@@ -1,1 +1,678 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sastriwati Fashion · UMKM</title>
+  <!-- Font & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
 
+    body {
+      background: #fcf8f3;
+      color: #1e1e2a;
+      line-height: 1.5;
+    }
+
+    /* HD layout – full width, crisp */
+    .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* HEADER */
+    header {
+      background: #ffffffdd;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #f0e8de;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #2d1f14;
+    }
+
+    .logo i {
+      color: #b45f3a;
+      font-size: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #2d1f14;
+      transition: 0.2s;
+      padding: 0.3rem 0;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      border-bottom-color: #b45f3a;
+      color: #b45f3a;
+    }
+
+    .cart-icon {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: #f3ede7;
+      padding: 0.5rem 1.2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.15s;
+      border: 1px solid #e5dbd1;
+    }
+
+    .cart-icon i {
+      font-size: 1.3rem;
+      color: #3d2a1c;
+    }
+
+    .cart-icon .badge {
+      background: #b45f3a;
+      color: white;
+      border-radius: 40px;
+      padding: 0.1rem 0.7rem;
+      font-size: 0.85rem;
+      margin-left: 0.2rem;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 3rem 0 4rem;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-title i {
+      color: #b45f3a;
+      font-size: 2rem;
+    }
+
+    /* HOME */
+    #home {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      background: linear-gradient(145deg, #f9f2ea 0%, #fcf8f3 100%);
+      border-radius: 48px;
+      padding: 2.5rem 3rem;
+      margin-top: 1rem;
+    }
+
+    .hero-text {
+      flex: 1 1 300px;
+    }
+
+    .hero-text h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      color: #1e130c;
+    }
+
+    .hero-text h1 span {
+      color: #b45f3a;
+      background: #f0e3d8;
+      padding: 0 0.6rem;
+      border-radius: 20px;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      color: #3d2a1c;
+      margin: 1.5rem 0 2rem;
+      max-width: 400px;
+      font-weight: 400;
+    }
+
+    .hero-image {
+      flex: 1 1 300px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-image i {
+      font-size: 12rem;
+      color: #b45f3a;
+      opacity: 0.2;
+      background: #e6d7ca;
+      padding: 1.5rem;
+      border-radius: 60px;
+    }
+
+    /* PRODUCT GRID */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 28px;
+      padding: 1.5rem 1.2rem 1.8rem;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.04);
+      transition: 0.25s ease;
+      border: 1px solid #ede6dd;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 48px rgba(0,0,0,0.06);
+      border-color: #dacfc4;
+    }
+
+    .product-img {
+      background: #f4ede7;
+      border-radius: 24px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4.5rem;
+      color: #b45f3a;
+      margin-bottom: 1rem;
+    }
+
+    .product-card h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    .product-card .price {
+      font-weight: 700;
+      color: #b45f3a;
+      font-size: 1.5rem;
+      margin: 0.5rem 0 1rem;
+    }
+
+    .product-card .desc {
+      color: #4d3a2c;
+      font-size: 0.95rem;
+      margin-bottom: 1.2rem;
+      flex: 1;
+    }
+
+    .btn-primary {
+      background: #2d1f14;
+      border: none;
+      color: white;
+      font-weight: 600;
+      padding: 0.7rem 0;
+      border-radius: 60px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      border: 1px solid #2d1f14;
+    }
+
+    .btn-primary:hover {
+      background: #b45f3a;
+      border-color: #b45f3a;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid #d4c6ba;
+      color: #2d1f14;
+      font-weight: 600;
+      padding: 0.7rem 0;
+      border-radius: 60px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+
+    .btn-secondary:hover {
+      background: #f0e8de;
+      border-color: #b45f3a;
+    }
+
+    /* KONTAK */
+    .contact-wrapper {
+      background: white;
+      border-radius: 40px;
+      padding: 2.5rem 3rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      border: 1px solid #ede6dd;
+    }
+
+    .contact-info {
+      flex: 1 1 240px;
+    }
+
+    .contact-info i {
+      width: 2.5rem;
+      color: #b45f3a;
+      font-size: 1.5rem;
+    }
+
+    .contact-info p {
+      font-size: 1.1rem;
+      margin: 1.2rem 0;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .contact-form {
+      flex: 2 1 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-form input, .contact-form textarea {
+      padding: 0.9rem 1.2rem;
+      border-radius: 50px;
+      border: 1px solid #e0d5ca;
+      background: #fcf8f3;
+      font-size: 1rem;
+      transition: 0.15s;
+    }
+
+    .contact-form input:focus, .contact-form textarea:focus {
+      outline: none;
+      border-color: #b45f3a;
+      box-shadow: 0 0 0 3px #f0e3d8;
+    }
+
+    .contact-form textarea {
+      border-radius: 28px;
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    /* KERANJANG (cart) */
+    .cart-panel {
+      background: white;
+      border-radius: 40px;
+      padding: 2rem 2.5rem;
+      margin-top: 2.5rem;
+      border: 1px solid #ede6dd;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      border-bottom: 1px solid #efe7df;
+      padding-bottom: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cart-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #faf6f1;
+      padding: 0.8rem 1.5rem;
+      border-radius: 60px;
+      flex-wrap: wrap;
+    }
+
+    .cart-item span {
+      font-weight: 500;
+    }
+
+    .cart-item .item-price {
+      font-weight: 700;
+      color: #b45f3a;
+    }
+
+    .cart-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.8rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .empty-cart {
+      color: #8f7a6a;
+      font-style: italic;
+      padding: 0.8rem 0;
+    }
+
+    .total-price {
+      font-weight: 700;
+      font-size: 1.4rem;
+      margin-left: auto;
+    }
+
+    /* footer */
+    footer {
+      border-top: 1px solid #e5dbd1;
+      padding: 2rem 0;
+      margin-top: 2rem;
+      text-align: center;
+      color: #4d3a2c;
+      font-weight: 400;
+    }
+
+    /* responsive */
+    @media (max-width: 800px) {
+      .navbar { flex-direction: column; gap: 1rem; }
+      .nav-links { flex-wrap: wrap; justify-content: center; gap: 1.2rem; }
+      .hero-text h1 { font-size: 2.8rem; }
+      #home { padding: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container navbar">
+      <div class="logo">
+        <i class="fas fa-crown"></i> Sastriwati
+      </div>
+      <div class="nav-links">
+        <a href="#" class="active" data-section="home">HOME</a>
+        <a href="#" data-section="product">PRODUCT</a>
+        <a href="#" data-section="contact">KONTAK</a>
+      </div>
+      <div class="cart-icon" id="cartToggle">
+        <i class="fas fa-shopping-bag"></i> Keranjang <span class="badge" id="cartCount">0</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HOME -->
+    <section id="home">
+      <div class="hero-text">
+        <h1>Fashion <span>berkelas</span> untuk <br>setiap momen</h1>
+        <p>Koleksi eksklusif Sastriwati – sentuhan elegan, kualitas premium.</p>
+        <button class="btn-primary" style="padding: 0.9rem 2.5rem; border-radius: 60px; width: auto;" onclick="document.querySelector('[data-section=\'product\']').click()">
+          <i class="fas fa-arrow-right"></i> Lihat Produk
+        </button>
+      </div>
+      <div class="hero-image">
+        <i class="fas fa-tshirt"></i>
+      </div>
+    </section>
+
+    <!-- PRODUCT -->
+    <section id="product" style="display: block;">
+      <div class="section-title">
+        <i class="fas fa-layer-group"></i> Produk Unggulan
+      </div>
+      <div class="product-grid" id="productGrid"></div>
+
+      <!-- KERANJANG (di dalam bagian product) -->
+      <div class="cart-panel" id="cartPanel">
+        <div class="cart-header">
+          <h3><i class="fas fa-shopping-bag" style="color: #b45f3a;"></i> Keranjang Belanja</h3>
+          <span id="cartItemCount">0 item</span>
+        </div>
+        <div class="cart-items" id="cartItems">
+          <div class="empty-cart">Keranjang kosong, yuk belanja!</div>
+        </div>
+        <div class="cart-actions">
+          <button class="btn-secondary" id="clearCart"><i class="fas fa-trash-alt"></i> Kosongkan</button>
+          <span class="total-price" id="totalPrice">Rp 0</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- KONTAK -->
+    <section id="contact" style="display: block;">
+      <div class="section-title">
+        <i class="fas fa-address-card"></i> Hubungi Kami
+      </div>
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <p><i class="fas fa-map-pin"></i> Jl. Fashion No. 88, Jakarta</p>
+          <p><i class="fas fa-phone-alt"></i> +62 812 3456 7890</p>
+          <p><i class="fas fa-envelope"></i> hello@sastriwati.id</p>
+          <p><i class="fas fa-clock"></i> Senin – Sabtu, 09:00 – 18:00</p>
+        </div>
+        <div class="contact-form">
+          <input type="text" placeholder="Nama lengkap" value="Sastri">
+          <input type="email" placeholder="Email" value="sastri@fashion.id">
+          <textarea placeholder="Pesan untuk kami..."></textarea>
+          <button class="btn-primary" style="padding: 0.9rem; width: 100%;"><i class="fas fa-paper-plane"></i> Kirim Pesan</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <i class="fas fa-crown" style="color: #b45f3a; margin-right: 8px;"></i> Sastriwati Fashion · UMKM Berdaya 
+      <span style="margin: 0 12px;">|</span>  © 2026 
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // ----- DATA PRODUK -----
+      const products = [
+        { id: 1, name: 'Kebaya Modern', price: 325000, icon: 'fa-user-tie', desc: 'Bahan katun premium, bordir tangan.' },
+        { id: 2, name: 'Batik Elegan', price: 275000, icon: 'fa-paint-brush', desc: 'Motif klasik, nyaman dipakai.' },
+        { id: 3, name: 'Blazer Wanita', price: 450000, icon: 'fa-user-graduate', desc: 'Blazer tailored, gaya profesional.' },
+        { id: 4, name: 'Gaun Pesta', price: 590000, icon: 'fa-female', desc: 'Sutra halus, detail payet.' },
+        { id: 5, name: 'Kemeja Kasual', price: 189000, icon: 'fa-male', desc: 'Linen breathable, daily wear.' },
+        { id: 6, name: 'Rok Batik', price: 210000, icon: 'fa-umbrella', desc: 'Paduan batik & modern.' }
+      ];
+
+      // state
+      let cart = [];
+      const cartCountEl = document.getElementById('cartCount');
+      const cartItemsEl = document.getElementById('cartItems');
+      const totalPriceEl = document.getElementById('totalPrice');
+      const cartItemCountEl = document.getElementById('cartItemCount');
+
+      // render product grid
+      const grid = document.getElementById('productGrid');
+      function renderProducts() {
+        grid.innerHTML = products.map(p => `
+          <div class="product-card">
+            <div class="product-img"><i class="fas ${p.icon}"></i></div>
+            <h3>${p.name}</h3>
+            <div class="price">Rp ${p.price.toLocaleString('id-ID')}</div>
+            <div class="desc">${p.desc}</div>
+            <button class="btn-primary add-to-cart" data-id="${p.id}">
+              <i class="fas fa-cart-plus"></i> Tambah
+            </button>
+          </div>
+        `).join('');
+
+        // event listener setiap tombol tambah
+        document.querySelectorAll('.add-to-cart').forEach(btn => {
+          btn.addEventListener('click', function(e) {
+            const id = parseInt(this.dataset.id);
+            const product = products.find(p => p.id === id);
+            if (product) addToCart(product);
+          });
+        });
+      }
+
+      // CART functions
+      function addToCart(product) {
+        const existing = cart.find(item => item.id === product.id);
+        if (existing) {
+          existing.qty += 1;
+        } else {
+          cart.push({ ...product, qty: 1 });
+        }
+        updateCartUI();
+        // animasi kecil
+        const badge = cartCountEl;
+        badge.style.transform = 'scale(1.3)';
+        setTimeout(() => badge.style.transform = 'scale(1)', 150);
+      }
+
+      function removeFromCart(id) {
+        cart = cart.filter(item => item.id !== id);
+        updateCartUI();
+      }
+
+      function clearCart() {
+        cart = [];
+        updateCartUI();
+      }
+
+      function updateCartUI() {
+        // update badge
+        const totalItems = cart.reduce((acc, i) => acc + i.qty, 0);
+        cartCountEl.textContent = totalItems;
+        cartItemCountEl.textContent = totalItems + ' item';
+
+        // render cart items
+        if (cart.length === 0) {
+          cartItemsEl.innerHTML = `<div class="empty-cart">Keranjang kosong, yuk belanja!</div>`;
+          totalPriceEl.textContent = 'Rp 0';
+          return;
+        }
+
+        let html = '';
+        let total = 0;
+        cart.forEach(item => {
+          total += item.price * item.qty;
+          html += `
+            <div class="cart-item">
+              <span><i class="fas ${item.icon}" style="margin-right: 10px; color:#b45f3a;"></i> ${item.name} × ${item.qty}</span>
+              <span class="item-price">Rp ${(item.price * item.qty).toLocaleString('id-ID')}</span>
+              <button class="btn-secondary remove-item" style="padding: 0.2rem 1rem; font-size:0.9rem; border-radius:40px;" data-id="${item.id}">
+                <i class="fas fa-times"></i> Hapus
+              </button>
+            </div>
+          `;
+        });
+        cartItemsEl.innerHTML = html;
+        totalPriceEl.textContent = `Rp ${total.toLocaleString('id-ID')}`;
+
+        // event hapus per item
+        document.querySelectorAll('.remove-item').forEach(btn => {
+          btn.addEventListener('click', function() {
+            const id = parseInt(this.dataset.id);
+            removeFromCart(id);
+          });
+        });
+      }
+
+      // clear cart button
+      document.getElementById('clearCart').addEventListener('click', clearCart);
+
+      // Navigasi antar section (HOME, PRODUCT, KONTAK) + scroll smooth
+      const navLinks = document.querySelectorAll('.nav-links a');
+      const sections = {
+        home: document.getElementById('home'),
+        product: document.getElementById('product'),
+        contact: document.getElementById('contact')
+      };
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const section = this.dataset.section;
+          // update active class
+          navLinks.forEach(l => l.classList.remove('active'));
+          this.classList.add('active');
+
+          // show section
+          Object.keys(sections).forEach(key => {
+            sections[key].style.display = key === section ? 'block' : 'none';
+          });
+
+          // jika product, scroll sedikit ke product
+          if (section === 'product') {
+            sections.product.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          } else if (section === 'home') {
+            sections.home.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          } else if (section === 'contact') {
+            sections.contact.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+
+      // Toggle keranjang (scroll ke cart panel)
+      document.getElementById('cartToggle').addEventListener('click', function() {
+        const productSection = document.getElementById('product');
+        productSection.style.display = 'block';
+        // scroll ke cart panel
+        document.getElementById('cartPanel').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // aktifkan tab product
+        navLinks.forEach(l => l.classList.remove('active'));
+        document.querySelector('[data-section="product"]').classList.add('active');
+        Object.keys(sections).forEach(key => {
+          sections[key].style.display = key === 'product' ? 'block' : 'none';
+        });
+      });
+
+      // inisialisasi (tampilkan home)
+      sections.home.style.display = 'block';
+      sections.product.style.display = 'none';
+      sections.contact.style.display = 'none';
+      renderProducts();
+      updateCartUI();
+    })();
+  </script>
+</body>
+</html>
