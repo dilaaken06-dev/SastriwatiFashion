@@ -176,13 +176,13 @@
       justify-content: center;
     }
 
-    .hero-image i {
-      font-size: 12rem;
-      color: #b45f3a;
-      opacity: 0.2;
-      background: #e6d7ca;
-      padding: 1.5rem;
-      border-radius: 60px;
+    .hero-image img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border-radius: 30px;
+      object-fit: cover;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
     }
 
     /* PRODUCT GRID */
@@ -220,6 +220,14 @@
       font-size: 4.5rem;
       color: #b45f3a;
       margin-bottom: 1rem;
+      overflow: hidden;
+    }
+
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 24px;
     }
 
     .product-card h3 {
@@ -453,7 +461,8 @@
         </button>
       </div>
       <div class="hero-image">
-        <i class="fas fa-tshirt"></i>
+        <img src="images/hero-fashion.jpg" alt="Sastriwati Fashion" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+        <i class="fas fa-tshirt" style="display:none;"></i>
       </div>
     </section>
 
@@ -511,14 +520,14 @@
 
   <script>
     (function() {
-      // ----- DATA PRODUK -----
+      // ----- DATA PRODUK dengan gambar -----
       const products = [
-        { id: 1, name: 'Kebaya Modern', price: 325000, icon: 'fa-user-tie', desc: 'Bahan katun premium, bordir tangan.' },
-        { id: 2, name: 'Batik Elegan', price: 275000, icon: 'fa-paint-brush', desc: 'Motif klasik, nyaman dipakai.' },
-        { id: 3, name: 'Blazer Wanita', price: 450000, icon: 'fa-user-graduate', desc: 'Blazer tailored, gaya profesional.' },
-        { id: 4, name: 'Gaun Pesta', price: 590000, icon: 'fa-female', desc: 'Sutra halus, detail payet.' },
-        { id: 5, name: 'Kemeja Kasual', price: 189000, icon: 'fa-male', desc: 'Linen breathable, daily wear.' },
-        { id: 6, name: 'Rok Batik', price: 210000, icon: 'fa-umbrella', desc: 'Paduan batik & modern.' }
+        { id: 1, name: 'Kebaya Modern', price: 325000, image: 'images/kebaya-modern.jpg', desc: 'Bahan katun premium, bordir tangan.' },
+        { id: 2, name: 'Batik Elegan', price: 275000, image: 'images/batik-elegan.jpg', desc: 'Motif klasik, nyaman dipakai.' },
+        { id: 3, name: 'Blazer Wanita', price: 450000, image: 'images/blazer-wanita.jpg', desc: 'Blazer tailored, gaya profesional.' },
+        { id: 4, name: 'Gaun Pesta', price: 590000, image: 'images/gaun-pesta.jpg', desc: 'Sutra halus, detail payet.' },
+        { id: 5, name: 'Kemeja Kasual', price: 189000, image: 'images/kemeja-kasual.jpg', desc: 'Linen breathable, daily wear.' },
+        { id: 6, name: 'Rok Batik', price: 210000, image: 'images/rok-batik.jpg', desc: 'Paduan batik & modern.' }
       ];
 
       // state
@@ -533,7 +542,9 @@
       function renderProducts() {
         grid.innerHTML = products.map(p => `
           <div class="product-card">
-            <div class="product-img"><i class="fas ${p.icon}"></i></div>
+            <div class="product-img">
+              <img src="${p.image}" alt="${p.name}" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\\'fas fa-tshirt\\' style=\\'font-size:4.5rem;color:#b45f3a;\\'></i>'">
+            </div>
             <h3>${p.name}</h3>
             <div class="price">Rp ${p.price.toLocaleString('id-ID')}</div>
             <div class="desc">${p.desc}</div>
@@ -597,7 +608,7 @@
           total += item.price * item.qty;
           html += `
             <div class="cart-item">
-              <span><i class="fas ${item.icon}" style="margin-right: 10px; color:#b45f3a;"></i> ${item.name} × ${item.qty}</span>
+              <span><img src="${item.image}" alt="${item.name}" style="width:30px;height:30px;object-fit:cover;border-radius:50%;margin-right:10px;vertical-align:middle;" onerror="this.style.display='none'"> ${item.name} × ${item.qty}</span>
               <span class="item-price">Rp ${(item.price * item.qty).toLocaleString('id-ID')}</span>
               <button class="btn-secondary remove-item" style="padding: 0.2rem 1rem; font-size:0.9rem; border-radius:40px;" data-id="${item.id}">
                 <i class="fas fa-times"></i> Hapus
